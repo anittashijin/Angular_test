@@ -1,0 +1,31 @@
+<table class="table mt-5">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Emp Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>...</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of allUsers  ;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{user.id}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td><span
+                    [ngClass]="user.status=='1'?'btn btn-success':'btn btn-warning'">{{user.status=="1"?"Active":"InActive"}}</span>
+            </td>
+            <td>
+                <button class="btn text-white" routerLink="/{{user.id}}/edit"><i class="fa-solid fa-edit text-primary"></i>
+                </button>
+                <button  (click)="deleteUser(user.id)" class="btn text-danger"> <i
+                        class="fa-solid fa-trash ms-3 "></i></button>
+            </td>
+        </tr>
+
+
+    </tbody>
+</table>

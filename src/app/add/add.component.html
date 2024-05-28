@@ -1,0 +1,46 @@
+
+<div >
+
+  <h3 class="text-center">User Registration!</h3>
+  <div class="align-items-center container w-50">
+      <form #addUserForm="ngForm" class="rounded p-5 border ">
+          <div class="form-floating mb-3">
+              <input #id="ngModel" name="id" [(ngModel)]="user.id" type="email" class="form-control" id="floatingInput" placeholder="User ID" pattern="[a-zA-z0-9]*" required>
+              <label for="floatingInput">User ID</label>
+            </div>
+            <div  *ngIf="id.invalid && id.touched" class="mb-3 text-danger fw-bolder">*Invalid user Id</div>
+            <div class="form-floating mb-3">
+              <input #name="ngModel"  name="name" [(ngModel)]="user.name"   class="form-control" id="floatingPassword" placeholder="User Name"  pattern="[a-zA-Z ]*" required>
+              <label for="floatingPassword">User Name</label>
+            </div>
+            <div  *ngIf="name.invalid && name.touched" class="mb-3 text-danger fw-bolder">*Invalid username</div>
+
+            <div  class="form-floating mb-3">
+              <input #email="ngModel"  name="email" [(ngModel)]="user.email"  class="form-control" id="floatingPassword" placeholder="User Mail" email required>
+              <label for="floatingPassword">User Mail</label>
+            </div>
+            <div  *ngIf="email.invalid && email.touched" class="mb-3 text-danger fw-bolder">*Invalid email</div>
+
+            <div class="form-floating mb-3">
+             <select #status="ngModel" name="status"  [(ngModel)]="user.status"  class="form-control" id="floatingInputStatus" placeholder="User Status">
+              <option value="" hidden disabled selected></option>
+              <option value="1">Active</option>
+
+              <option value="0">InActive</option>
+
+             </select>
+              <label for="floatingPassword">User Status</label>
+            </div>
+
+            <div  *ngIf="status.invalid && status.touched" class="mb-3 text-danger fw-bolder">*Invalid status</div>
+
+
+
+            <div class="text-center">
+              <button  (click)="addUser()" [disabled]="addUserForm.invalid" class="btn btn-success">Save</button>
+              <button  (click)="cancel()" class="btn btn-danger ms-5">Cancel</button>
+
+            </div>
+      </form>
+  </div>
+</div>
